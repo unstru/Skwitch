@@ -16,3 +16,6 @@
 [submodule "javascript/modules/String"]
 	path = javascript/modules/String
 	url = git@github.com:cagosta/String.git
+[submodule "javascript/modules/objects"]
+	path = javascript/modules/objects
+	url = git@github.com:cagosta/objects
