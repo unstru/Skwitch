@@ -1,0 +1,3 @@
+[submodule "javascript/modules/Seed"]
+	path = javascript/modules/Seed
+	url = git@github.com:cagosta/Seed.git
