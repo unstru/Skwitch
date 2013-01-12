@@ -1,4 +1,4 @@
-define('config/Config', [
+define('Config/Config', [
   'Seed/Seed'
 ], function(Seed) {
 

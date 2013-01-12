@@ -1,7 +1,7 @@
 define('Skwitch/Animation/Sequence', [
   './DOMView',
   'Geo/Coordinate',
-  'Geo/D2Point->Point',
+  'Geo/D2Point',
   './Frame',
   'objects/is'
 ], function(View, Coordinate, Point, Frame, is) {

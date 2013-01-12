@@ -1,7 +1,7 @@
 define('Skwitch/Animation/frameAttributes/PositionAttribute', [
 	'../FrameAttribute',
 	'Geo/refs',
-	'Geo/D2Point->Point',
+	'Geo/D2Point',
 	'Geo/Coordinate',
   'core/is'
 ], function(FrameAttribute, refs, Point, Coordinate, is) {
