@@ -103,7 +103,6 @@ define('Skwitch/Animation/DOMView', [
     buildEl : function() {
       if (this.domDesc) {
         this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
-        this.setStyle();
       }
     },
 

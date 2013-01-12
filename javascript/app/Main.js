@@ -9,8 +9,9 @@ define('app/Main', [
   'Geo/Rect',
   'Skwitch/Animation/DOMView',
   'Seed/Seed',
-  'toDOM'
-], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM) {
+  'toDOM',
+  './scenes/Scene1'
+], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM, Scene1) {
 
   return Seed.extend({
 
@@ -52,10 +53,10 @@ define('app/Main', [
     buildRects : function() {
       this.rect = {};
       this.bodySize = [document.body.offsetWidth, document.body.offsetHeight];
-      this.rect.db =  new Geo.Rect([[0,0], this.bodySize]);
+      this.rect.db =  new Rect([[0,0], this.bodySize]);
       var dbSize = this.rect.db.getValue()[1];
-      this.rect.window = new Geo.Rect(this.rect.db.getValue());
-      this.rect.scene = new Geo.Rect( [this.rect.window.getValue()[1].minus(this.sceneSize).divide(2), this.sceneSize]);
+      this.rect.window = new Rect(this.rect.db.getValue());
+      this.rect.scene = new Rect( [this.rect.window.getValue()[1].minus(this.sceneSize).divide(2), this.sceneSize]);
     },
 
     buildRefs : function() {
@@ -101,6 +102,7 @@ define('app/Main', [
     },
 
     buildScenes : function() {
+      this.scenes.push(this.sub(Scene1));
     }
 
 
