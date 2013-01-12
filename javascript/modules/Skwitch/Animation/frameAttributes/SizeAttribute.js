@@ -1,6 +1,6 @@
 define('Skwitch/Animation/frameAttributes/SizeAttribute', [
-	'animation/FrameAttribute',
-  'core/is'
+	'../FrameAttribute',
+  'objects/is'
 ], function(FrameAttribute, is) {
 
 	return FrameAttribute.extend({

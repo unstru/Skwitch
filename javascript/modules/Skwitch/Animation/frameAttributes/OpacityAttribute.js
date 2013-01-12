@@ -2,7 +2,7 @@ define('Skwitch/Animation/frameAttributes/OpacityAttribute', [
 	'../FrameAttribute'
 ], function(FrameAttribute) {
 
-	return r.FrameAttribute.extend({
+	return FrameAttribute.extend({
 
 		'+options' : {
 			value : 1

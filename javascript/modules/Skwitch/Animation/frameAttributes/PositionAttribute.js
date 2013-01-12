@@ -3,7 +3,7 @@ define('Skwitch/Animation/frameAttributes/PositionAttribute', [
 	'Geo/refs',
 	'Geo/D2Point',
 	'Geo/Coordinate',
-  'core/is'
+  'objects/is'
 ], function(FrameAttribute, refs, Point, Coordinate, is) {
 
 	return FrameAttribute.extend({

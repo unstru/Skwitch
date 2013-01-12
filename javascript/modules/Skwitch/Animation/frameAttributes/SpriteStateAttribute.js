@@ -2,6 +2,8 @@ define('Skwitch/Animation/frameAttributes/DisplayAttribute', [
 	'../FrameAttribute'
 ], function(FrameAttribute) {
 
+	return FrameAttribute.extend({
+		
 		'+options' : {
 			value : 0
 		},

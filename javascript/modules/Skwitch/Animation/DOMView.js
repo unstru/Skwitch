@@ -56,11 +56,11 @@ define('Skwitch/Animation/DOMView', [
       if (el) {
         for (var i in o) if (o.hasOwnProperty(i)) {
           if (this.cssFormater[i]) {
-            r.extend(o, this.cssFormater[i](o[i]));
+            extend(o, this.cssFormater[i](o[i]));
           }
         }
       }
-      r.extend(el.style, o);
+      extend(el.style, o);
     },
 
     cssFormater : {
@@ -111,7 +111,7 @@ define('Skwitch/Animation/DOMView', [
     },
     
     destroy : function(o){
-      r.Controller.prototype.destroy.call(this,o);
+      Seed.prototype.destroy.call(this,o);
       this.el && this.el.parentNode && this.el.parentNode.removeChild(this.el);
     }
     

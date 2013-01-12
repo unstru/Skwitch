@@ -1,8 +1,8 @@
-fjs.define('Skwitch/Animation/frameAttributes/ScrollAttribute', [
+define('Skwitch/Animation/frameAttributes/ScrollAttribute', [
 	'./AbstractRateAttribute'
-], function(r) {
+], function(AbstractRateAttribute) {
 
-	return r.AbstractRateAttribute.extend({
+	return AbstractRateAttribute.extend({
 
 	});
 

@@ -7,7 +7,7 @@ define('Skwitch/Animation/frameAttributes/all', [
 	'./RotateAttribute',
 	'./ScrollAttribute',
 	'./SizeAttribute',
-	'SpriteStateAttribute'
+	'./SpriteStateAttribute'
 ], function(DisplayAttribute, OpacityAttribute, PositionAttribute, RotateAttribute, ScrollAttribute, SizeAttribute, SpriteStateAttribute) {
 
 	return{

@@ -14,13 +14,16 @@ define('app/scenes/Scene1', [
 						domDesc : {
 							style : {
 								backgroundColor : '#000'
-							}
+							},
+							className : 'sequence'
 						},
 						framesInit : [
 							[
 								{
-									position : [100, 100, 'window'],
-									size : [100, 100]
+									position : [0, 0, 'window'],
+									size : [100, 100],
+									rotate : 0,
+									opacity : 1
 								},
 								0
 							],
@@ -29,6 +32,56 @@ define('app/scenes/Scene1', [
 									position : ['center', 'center', 'scene']
 								},
 								20
+							],
+							[
+								{},
+								25
+							],
+							[
+								{
+									size : [200,100],
+									position : ['center', 'center', 'scene']
+								},
+								30
+							],
+							[
+								{
+									size : [200,400],
+									position : ['center', 'center', 'scene']
+								},
+								35
+							],
+							[
+								{
+									rotate : 180
+								},
+								40
+							],
+							[
+								{
+									position : ['center', 'center', 'scene'],
+									size : 'scene'
+								},
+								45
+							],
+							[
+								{
+									size : 'window',
+									position : ['center', 'center', 'window']
+								},
+								50
+							],
+							[
+								{
+									position : ['right', 'center', 'scene']
+								},
+								55
+							],
+							[
+								{
+									position : ['left', 'center', 'scene']
+								},
+								60
 							]
 						]
 					}

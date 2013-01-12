@@ -1,0 +1,56 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: relative;
+}
+
+.sequence {
+	position: absolute;
+}
+
+.skwitch_window {
+	width : 100%;
+	height : 100%;
+	position : fixed;
+	overflow : hidden;
+	z-index : 1;
+	top : 0;
+}
+
+
+
+#scroll {
+	position : absolute;
+	top : 0;
+	width : 100%;
+	height : 101%;
+}
+
+/*
+.iphone {
+	#scroll {
+		display: none;
+	}
+}
+
+.iphone .touch_interaction {
+	padding-bottom : 100px;
+}
+.iphone {
+	margin-top : 30px;
+	padding-bottom : 60px;
+}
+
+.iphone .skwitch_window {
+	position : absolute;
+}
+
+
+
+
+/*

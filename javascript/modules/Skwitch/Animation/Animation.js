@@ -2,8 +2,9 @@ define('Skwitch/Animation/Animation', [
   './Sequence',
   'objects/extend',
   'Seed/Seed',
-  'objects/is'
-], function(Sequence, extend, Seed, is) {
+  'objects/is',
+  'Array/eachPair'
+], function(Sequence, extend, Seed, is, A) {
 
 	var Animation = Sequence.extend({
 

@@ -1,4 +1,4 @@
-define('animation/FrameAttribute', [
+define('Skwitch/Animation/FrameAttribute', [
 	'Seed/Seed'
 ], function(Seed) {
 
