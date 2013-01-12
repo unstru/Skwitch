@@ -3,7 +3,7 @@ define('app/configs',[
 
 	return function() {
     return {
-      initState : 0.2,
+      initState : 80,
       fps : function() {
         if (this.get('isMobile')) {
           return 30;
@@ -21,9 +21,7 @@ define('app/configs',[
         }
       },
       interactionName : !!('ontouchstart' in window) ? 'touch' : 'scroll',
-      isIpad : function() {
-        return navigator.userAgent.match(/iPad/i) !== null;
-      },
+
       IEVersion : function() {
         var rv = -1; // Return value assumes failure.
         if (navigator.appName == 'Microsoft Internet Explorer') {
@@ -39,10 +37,12 @@ define('app/configs',[
       },
       isMobile : (/iphone|ipod|android|blackberry|opera mini|opera mobi|skyfire|maemo|windows phone|palm|iemobile|symbian|symbianos|fennec/i.test(navigator.userAgent.toLowerCase())),
       isTablet : (/ipad|android 3|sch-i800|playbook|tablet|kindle|gt-p1000|sgh-t849|shw-m180s|a510|a511|a100|dell streak|silk/i.test(navigator.userAgent.toLowerCase())),
+      isIpad : function() {
+        return navigator.userAgent.match(/iPad/i) !== null;
+      },
       device : function() {
         return (this.get('isTablet')) ? "tablet" : this.get('isMobile') ? "mobile" : "desktop";
       },
-      cufoniseFor : [],//['Linux', 'UNIX'],
       buildSecurity : function() {
         if (this.get('isIpad')) {
           return 20;

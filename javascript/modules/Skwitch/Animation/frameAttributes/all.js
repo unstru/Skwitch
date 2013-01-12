@@ -7,8 +7,9 @@ define('Skwitch/Animation/frameAttributes/all', [
 	'./RotateAttribute',
 	'./ScrollAttribute',
 	'./SizeAttribute',
-	'./SpriteStateAttribute'
-], function(DisplayAttribute, OpacityAttribute, PositionAttribute, RotateAttribute, ScrollAttribute, SizeAttribute, SpriteStateAttribute) {
+	'./SpriteStateAttribute',
+	'./ColorAttribute'
+], function(DisplayAttribute, OpacityAttribute, PositionAttribute, RotateAttribute, ScrollAttribute, SizeAttribute, SpriteStateAttribute, ColorAttribute) {
 
 	return{
 		DisplayAttribute : DisplayAttribute,
@@ -17,7 +18,8 @@ define('Skwitch/Animation/frameAttributes/all', [
 		RotateAttribute : RotateAttribute,
 		ScrollAttribute : ScrollAttribute,
 		SizeAttribute : SizeAttribute,
-		SpriteStateAttribute : SpriteStateAttribute
+		SpriteStateAttribute : SpriteStateAttribute,
+		ColorAttribute : ColorAttribute
 	};
 
 });

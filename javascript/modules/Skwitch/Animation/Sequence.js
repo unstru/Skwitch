@@ -301,6 +301,12 @@ define('Skwitch/Animation/Sequence', [
        this.el.style.height = size[1] + 'px';
     },
 
+    _renderColor : function(c) {
+      this.css({
+        color : 'rgba(' + c.join() + ')'
+      });
+    },
+
     _renderOpacity : function(i) {
       if (this.debug === 'opacity') console.log(i);
       if (i< 0) i = 0;
@@ -320,14 +326,10 @@ define('Skwitch/Animation/Sequence', [
     _renderPosition : function(c) {
       var p = c.inRef('db').getValue();
       if (this.debug === 'frames') console.log('[debug]', this.name, 'p final', p);
-      if (this.el) {
-        this.el.style.left = p[0] + 'px';
-        this.el.style.top = p[1] + 'px';
-      } else if (this.raphaelEl) {
-        this.raphaelEl.attr({
-          transform : 'T' + p[0] + ' ' + p[1] + 'S' + this.scaleF + 'R' + this.rotation
-        });
-      }
+      this.css({
+        left : p[0] + 'px',
+        top : p[1] + 'px'
+      });
     },
 
     '+destroy' : function() {

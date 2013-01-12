@@ -10,8 +10,9 @@ define('app/Main', [
   'Skwitch/Animation/DOMView',
   'Seed/Seed',
   'toDOM',
-  './scenes/Scene1'
-], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM, Scene1) {
+  './animations/Scene1',
+  './animations/DocAnimation'
+], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM, Scene1, DocAnimation) {
 
   return Seed.extend({
 
@@ -104,6 +105,9 @@ define('app/Main', [
     buildScenes : function() {
       this.scenes = [];
       this.scenes.push(this.sub(Scene1));
+      this.scenes.push(this.sub(DocAnimation, {
+        parentEl : this.el
+      }));
     }
 
 
