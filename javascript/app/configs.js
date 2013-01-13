@@ -4,7 +4,7 @@ define('app/configs',[
 	return function() {
     return {
       // Timeline config 
-      initState : 90,
+      initState : 0,
       fps : function() {
         if (this.get('isMobile')) {
           return 30;
@@ -51,9 +51,6 @@ define('app/configs',[
       isTablet : (/ipad|android 3|sch-i800|playbook|tablet|kindle|gt-p1000|sgh-t849|shw-m180s|a510|a511|a100|dell streak|silk/i.test(navigator.userAgent.toLowerCase())),
       isIpad : function() {
         return navigator.userAgent.match(/iPad/i) !== null;
-      },
-      interval : function() {
-        return ();
       }
     };
   };
