@@ -13,13 +13,12 @@ define('app/animations/Parallax', [
 		},
 
 		'+init' : function() {
-			this.changeFDeltaDuringParallax();
+			// this.changeFDeltaDuringParallax();
 		},
 
 		changeFDeltaDuringParallax : function() {
 			this.between(10,30, {
 				enter : function() {
-					this._a.config.set('fDelta', 1.0001);
 
 				}.bind(this)
 			});

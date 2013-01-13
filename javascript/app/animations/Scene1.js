@@ -9,6 +9,9 @@ define('app/animations/Scene1', [
 		'+options' : {
 			start : 0,
 			end : 430,
+			keyInstant : {
+				
+			},
 			sequencesInit : function() {
 				return [
 					{
