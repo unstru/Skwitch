@@ -16,10 +16,8 @@ define('Skwitch/Animation/DOMView', [
       if (!o) o = {};
       Seed.prototype.init.call(this,o);
 
-      if (!this.el) {
-        if (this.domDesc) {
-          this.buildEl();
-        }
+      if (!o.el && o.domDesc) {
+        this.buildEl(o);
       }
       
       if (this.el) {
@@ -28,12 +26,15 @@ define('Skwitch/Animation/DOMView', [
           if (typeof(this.parentEl) === 'function')this.parentEl = this.parentEl();
           if (!o.insertBefore) {
             this.parentEl.appendChild(this.el);
-          }
-          else {
+          } else {
             this.parentEl.insertBefore(this.el, o.insertBefore);
           }
         }
       }
+    },
+
+    buildEl : function(o) {
+      this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
     },
 
     hasClass : function(name) {
@@ -99,10 +100,6 @@ define('Skwitch/Animation/DOMView', [
         }
       }
       return desc;
-    },
-    
-    buildEl : function(o) {
-      this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
     },
 
     size: function(){
