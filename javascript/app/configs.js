@@ -3,27 +3,37 @@ define('app/configs',[
 
 	return function() {
     return {
-      initState : 0,
+      // Timeline config 
+      initState : 90,
       fps : function() {
         if (this.get('isMobile')) {
           return 30;
         } else if (this.get('isTablet')) {
-          return 60;
+          return 80;
         } else  {
           return 80;
         }
       },
       fDelta : function() {
         if (this.get('isTablet')) {
-          return 1.05;
+          return 1.2;
         } else if (this.get('isMobile')){
           return 1.5;
         } else {
           return 1.05;
         }
       },
+      minFDelta : 1.01,
+      maxFDelta : 1.1,
+      maxFinalStatesDelta : 0.01,
+      totalDuration : 170,
+      elHeight : 43000/2,
+      scrollFactor : 60,
       interactionName : !!('ontouchstart' in window) ? 'touch' : 'scroll',
-
+      device : function() {
+        return (this.get('isTablet')) ? "tablet" : this.get('isMobile') ? "mobile" : "desktop";
+      },
+      // These detections should not be here
       IEVersion : function() {
         var rv = -1; // Return value assumes failure.
         if (navigator.appName == 'Microsoft Internet Explorer') {
@@ -42,39 +52,8 @@ define('app/configs',[
       isIpad : function() {
         return navigator.userAgent.match(/iPad/i) !== null;
       },
-      device : function() {
-        return (this.get('isTablet')) ? "tablet" : this.get('isMobile') ? "mobile" : "desktop";
-      },
-      buildSecurity : function() {
-        if (this.get('isIpad')) {
-          return 20;
-        } else {
-          return 200;
-        }
-      },
-      isTouch : window.isTouch,
-      doDestroyScenes : function() {
-        return this.get('isIpad');
-      },
-      os : (function() {
-        var OSName="Unknown OS";
-        if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
-        if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
-        if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
-        if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
-        return OSName;
-      })(),
-      isToCufonise : function() {
-      },
-      minFDelta : 1.01,
-      maxFDelta : 1.1,
-      totalDuration : 170,
-      elHeight : 43000/2,
-      maxFinalStatesDelta : 0.01,
-      scrollFactor : 10,
-      intervalBeforeInteractionEnd : 500,
       interval : function() {
-        return (1000 / this.get('fps'));
+        return ();
       }
     };
   };
