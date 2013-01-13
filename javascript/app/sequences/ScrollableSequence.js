@@ -10,13 +10,14 @@ define('app/sequences/ScrollableSequence', [
 			paragraphEl : null
 		},
 
-		'+init' : function() {
+		'+init' : function(o) {
+			this.buildEl();
 			this.paragraphContainer.appendChild(this.paragraphEl)
 			this.detectHeight();
 		},
 
 		buildEl : function() {
-			return this.el =  toDOM({
+			this.el =  toDOM({
 				className : 'scrollable_sequence viewport sequence',
 				style : {
 					overflow : 'hidden',
