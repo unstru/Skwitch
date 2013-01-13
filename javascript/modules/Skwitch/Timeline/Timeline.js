@@ -7,18 +7,14 @@ define('Skwitch/Timeline/Timeline', [
   return Seed.extend({
 
     '+options' : {
-      interaction : null,
-      start : 0,
-      end : 340,
       config : null,
       initState : null
     },
 
     '+init' : function() {
       window.timeline = this;
-      this.initState = this.initState || this._a.config.get('initState');
-      this.interactionName = this._a.config.get('interactionName');
-      this.config = this._a.config;
+      this.initState = this.initState || this.config.get('initState');
+      this.interactionName = this.config.get('interactionName');
       this.buildInteraction();
       this.buildMagnets();
       this.appState = this.interaction.getState();
@@ -85,7 +81,7 @@ define('Skwitch/Timeline/Timeline', [
 
     onInteractionEnd : function() {
       this.detachSubscriptions();
-      this.setTweener('easeIn', { fDeltaStart : this.config.get('fDelta') / 2});
+      this.setTweener('easeIn', { fDeltaStart : this.config.get('fDelta', { current : true}) / 2});
       this.appToMagnet();
       this.interaction.forceToState(this.targetState);
       this.after(300, this.attachEvents.bind(this));
@@ -154,7 +150,7 @@ define('Skwitch/Timeline/Timeline', [
           this.appTowardTarget();
         }
         this.watch();
-      }.bind(this), this.config.get('interval'));
+      }.bind(this), 1000 / this.config.get('fps'));
     },
 
     setTargetState : function(state) {

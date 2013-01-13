@@ -35,7 +35,7 @@ define('Skwitch/Timeline/interactions/TouchInteraction', [
         this._last = y;
         return;
       }
-      var diff = (this._last - y)/this._a.config.get('scrollFactor'),
+      var diff = (this._last - y)/this.config.get('scrollFactor'),
           state = this.state + diff;
       this._last = y;
       if (state < 0) {

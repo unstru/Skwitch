@@ -66,7 +66,9 @@ define('app/Main', [
     },
 
     buildTimeline : function() {
-      this.timeline = this.sub(Timeline, {});
+      this.timeline = this.sub(Timeline, {
+        config : this.config
+      });
     },
 
     buildEl : function() {
