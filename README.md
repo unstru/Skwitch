@@ -26,10 +26,11 @@ It is divided into 2 main modules : Skwitch/Timeline and Skwitch/Animation.
 
 #### Skwitch/Timeline
 The timeline was developped to solve the lack of window.onscroll triggers on iPad/iPhone safari. It could be separated from Skwitch/Animation.  
-It triggers a 'tick' event on interaction ( such as scroll or touch ) much more time than window.onscroll and with a smooth effect also on iPad and iPhone.  
-Many configurations are available for optimisation, see app/configs.js
+It triggers a 'tick' event on interaction ( such as scroll or touch ) much more time than window.onscroll, with a smooth effect.  
 It also provide 'magnets', wich are the key instants of your application wich are targeted by default on click or whenever you want.  
 You can find the current app magnets definitions in `Skwitch/Timeline/magnets/magnets` ( javascript/modules/Skwitch/Timeline/magnets/magnets)
+
+Many configurations are available for optimisation, see app/configs.js  
 
 Exemple code : 
 
@@ -157,8 +158,6 @@ The currently supported interpolations are :
 * size  
 * display ( true/false for 'none/block')
 
-And 
-
 The logic that defines what means to be between attribute A and a attribute B is into `javascript/modules/Skwitch/Animation/frameAttributes`.
 What define how to render an attribute is in Animation/Sequence.  
 
@@ -219,9 +218,9 @@ Also,
 
 ### To Do
 
-* comment the whole code
-* doc
-* compile sources
+* Comment the whole code
+* Doc
+* Compile sources
 * Provide a easy-to use Timeline
 * Separate Skwitch/Animation and Skiwtch/Timeline  ?? ( Try with tween.js )
 * Do better Timeline.tweener
