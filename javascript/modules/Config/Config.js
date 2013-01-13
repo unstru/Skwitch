@@ -13,7 +13,11 @@ define('Config/Config', [
       this.initValues = {};
       for (var i in this.values) {
         if (this.values.hasOwnProperty(i)) {
-          this.initValues[i] = this.get(i);
+          if (typeof this.values[i] === 'function') {
+            this.initValues[i] = this.values[i]();
+          } else {
+            this.initValues[i] = this.values[i];
+          }
         }
       }
     },
@@ -38,7 +42,10 @@ define('Config/Config', [
       this.values[key] = value;
     },
 
-    get : function(name) {
+    get : function(name, o) {
+      if (!o || !o.current) {
+        return this.initValues[name];
+      }
       return typeof this.values[name] === 'function' ? this.values[name]() : this.values[name];
     }
 
