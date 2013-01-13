@@ -8,19 +8,20 @@ define('Skwitch/Animation/DOMView', [
  	return Seed.extend({
 
     '+options' : {
-      domDesc : null
+      domDesc : null,
+      el : null
     },
 
     init : function(o) {
       if (!o) o = {};
       Seed.prototype.init.call(this,o);
 
-      if (o.el) {
-      	this.el = o.el;
+      if (!this.el) {
+        if (this.domDesc) {
+          this.buildEl();
+        }
       }
-        
-      this.buildEl(o);
-
+      
       if (this.el) {
         this.parentEl = o.parentEl || this.parentEl;
         if (this.parentEl) {
@@ -100,10 +101,8 @@ define('Skwitch/Animation/DOMView', [
       return desc;
     },
     
-    buildEl : function() {
-      if (this.domDesc) {
-        this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
-      }
+    buildEl : function(o) {
+      this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
     },
 
     size: function(){
