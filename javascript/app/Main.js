@@ -11,8 +11,8 @@ define('app/Main', [
   'Seed/Seed',
   'toDOM',
   './animations/Scene1',
-  './animations/DocAnimation'
-], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM, Scene1, DocAnimation) {
+  'app/animations/Parallax'
+], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM, Scene1, Parallax) {
 
   return Seed.extend({
 
@@ -29,7 +29,37 @@ define('app/Main', [
       this.buildEl();
       this.buildScenes();
       this.timeline.play();
+      this.initEvents();
     },
+
+    initEvents : function() {
+      this._resizing = 0;
+      window.onresize = this.onResizeLater.bind(this);
+    },
+
+    onResizeLater : function() {
+      this._resizing++;
+      this.el.style.display = 'none';
+      setTimeout(function() {
+        this._resizing--;
+        if (!this._resizing) {
+          this.onResize();
+          this.el.style.display = 'block';
+        }
+      }.bind(this), 200); 
+    },
+
+    onResize : function() {
+      this.reload();
+    },
+
+    reload : function() {
+      var lastState = this.timeline.appState;
+      this.timeline.pause();
+      this.destroy();
+      this.body.el.innerHTML = '';
+      this.init({ initState : lastState });
+    }, 
 
     buildConfig : function() {
       this.config = this.sub(Config, { values : configs() });
@@ -53,7 +83,6 @@ define('app/Main', [
 
     buildRects : function() {
       this.rect = {};
-      this.bodySize = [document.body.offsetWidth, document.body.offsetHeight];
       this.rect.db =  new Rect([[0,0], this.bodySize]);
       var dbSize = this.rect.db.getValue()[1];
       this.rect.window = new Rect(this.rect.db.getValue());
@@ -80,34 +109,31 @@ define('app/Main', [
     },
 
     setVersion : function() {
+      this.bodySize = [document.body.offsetWidth, document.body.offsetHeight];
       var bodySize = this.bodySize,
           version = {};
-
-      version.l = '1024x600';
-      version.s = 10;
-      this.sceneSize = [1024,600];
       this.config.set('version', version);
-      return;
-      if (bodySize[0] >= 1050 && bodySize[1] >= 830) { // 1280
-        version.l = '1280x800';
-        version.s = 12;
-        this.sceneSize = [1280,800];
-      } else if (bodySize[0] <= 760 || bodySize[1] <= 600 ) { // 320
-        version.l = '320x480';
+      if (bodySize[0] >= 1024 && bodySize[1] >= 576) { // 1024
+        version.l = '1024x576';
+        version.s = 10;
+        this.sceneSize = [1024,576];
+      } else if (bodySize[0] <= 768 || bodySize[1] <= 432 ) { // 320
+        version.l = '320x416';
         version.s = 3;
-        this.sceneSize = [320, 420];
-      } else {
-
+        this.sceneSize = [320, 416];
+      } else { // 768
+        version.l = '768x423';
+        version.s = 3;
+        this.sceneSize = [768, 432];
       }
-
+      console.log('version : ', version.l);
+      console.log(version.l);
     },
 
     buildScenes : function() {
       this.scenes = [];
       this.scenes.push(this.sub(Scene1));
-      this.scenes.push(this.sub(DocAnimation, {
-        parentEl : this.el
-      }));
+      this.scenes.push(this.sub(Parallax));
     }
 
 

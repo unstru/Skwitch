@@ -23,14 +23,14 @@ body {
 }
 
 .state {
-	color : #fff;
+	color : rgb(255,255,107);
 	width: 100%;
 	position: absolute;
-
+	right: 20px;
 	font-family: 'Alegreya SC', serif;
 	padding-top : 10px;
 	font-size : 20px;
-	text-align: center;
+	text-align: right;
 }
 .square_2 {
 	color : #fff;
@@ -59,6 +59,11 @@ h1 {
 	font-weight: 900;
 	letter-spacing: 5px;
 	font-size: 70px;
+
+}
+
+.parallax h1 {
+	line-height: 70px;
 }
 
 h2 {

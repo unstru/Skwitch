@@ -41,8 +41,9 @@ define('app/sequences/ScrollableSequence', [
 				this.paragraphEl.offsetHeight = this.viewportHeight;
 				pHeight = this.viewportHeight;
 			}
-			console.log('pHeith',pHeight, 'viewportHeight', this.viewportHeight);
 			this.paragraphHeight = pHeight;
+
+			this.paragraphHeight += 3;
 		},
 
 		_renderScroll : function(scrollState) {

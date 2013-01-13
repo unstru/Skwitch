@@ -15,6 +15,7 @@ define('Skwitch/Timeline/Timeline', [
     },
 
     '+init' : function() {
+      window.timeline = this;
       this.initState = this.initState || this._a.config.get('initState');
       this.interactionName = this._a.config.get('interactionName');
       this.config = this._a.config;
@@ -63,7 +64,7 @@ define('Skwitch/Timeline/Timeline', [
       ];
     },
 
-    detachEvents : function() {
+    detachSubscriptions : function() {
       if (this.events) {
         this.events.send('un');
       }
@@ -83,7 +84,7 @@ define('Skwitch/Timeline/Timeline', [
     },
 
     onInteractionEnd : function() {
-      this.detachEvents();
+      this.detachSubscriptions();
       this.setTweener('easeIn', { fDeltaStart : this.config.get('fDelta') / 2});
       this.appToMagnet();
       this.interaction.forceToState(this.targetState);
@@ -98,7 +99,7 @@ define('Skwitch/Timeline/Timeline', [
     },
 
     doInteractionNext : function() {
-      this.detachEvents();
+      this.detachSubscriptions();
       this.toNextMagnet();
       this.interaction.forceToState(this.targetState);
       this.after(1000, this.attachEvents.bind(this));
@@ -130,7 +131,7 @@ define('Skwitch/Timeline/Timeline', [
         this.twinner = this.on('tick', function(state) {
           var fDelta = min + Math.sin( ((state - begin) /  (end - begin) ) * Math.PI / 2 ) * (max - min);
           set('fDelta', fDelta );
-        }.bind(this));
+        }.bind(this), this);
       } else {
         this.config.reset('fDelta');
       }

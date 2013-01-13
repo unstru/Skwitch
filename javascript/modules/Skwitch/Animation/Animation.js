@@ -180,7 +180,6 @@ define('Skwitch/Animation/Animation', [
       formatted = extend({
         parentEl : unformatted.parentEl || this.el || this.parentEl,
         render : true,
-        type : 'img',
         cstr : Sequence,
         keyInstant : this.formatKeyInstant(this.keyInstant)
       }, unformatted);
@@ -204,7 +203,7 @@ define('Skwitch/Animation/Animation', [
         },
         attr : {
           src : src,
-          'class' : 'absolute visu'
+          'class' : 'sequence'
         }
       };
       formatted = unformatted;

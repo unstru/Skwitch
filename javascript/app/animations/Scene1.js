@@ -40,15 +40,16 @@ define('app/animations/Scene1', [
 								{
 									color : [0,0,0]
 								},
-								10
-							],
-							[
-								{},
-								60
+								5
 							],
 							[
 								{
-									opacity : 0
+								},
+								20
+							],
+							[
+								{
+									display : false
 								},
 								70
 							],
@@ -57,6 +58,95 @@ define('app/animations/Scene1', [
 									display : false
 								},
 								71
+							]
+						],
+					},
+					{
+						type : 'domDesc',
+						name : 'play',
+						domDesc : {
+							className : 'sequence',
+							style : {
+								zIndex : 1
+							},
+							children : [
+								{
+									tag : 'h1',
+									innerHTML : 'LET\'S PLAY'
+								}
+							]
+						},
+						className : 'sequence',
+						framesInit : [
+							[
+								{
+									position : [10, 210, 'window'],
+									size : [600,70],
+									opacity : 0,
+									rotate : 0,
+									color : '#ffffff'
+								},
+								0
+							],
+							[
+								{
+								},
+								10
+							],
+							[
+								{
+									opacity : 1
+								},
+								20
+							],
+							[
+								{
+									rotate : 45,
+									position : [['center','scene'],'center','scene' ]
+								},
+								30
+							],
+							[
+								{
+									rotate : 30
+								},
+								40
+							],
+							[
+								{},
+								50
+							],
+							[
+								{
+									rotate : 0,
+									position : ['center+250', 'center', 'scene']
+								},
+								55
+							],
+							[
+								{
+									color : [0,255,255]
+								},
+								60
+							],
+							[
+								{
+									color : [255,0,0]
+								},
+								65
+							],
+							[
+								{
+									color : [255,255,0],
+								},
+								75
+							],
+							[
+								{
+									color : '#ffffff',
+									position : ['unchanged', 'top','scene'],
+								},
+								85
 							]
 						],
 					},
@@ -87,22 +177,22 @@ define('app/animations/Scene1', [
 								0
 							],
 							[
-								{
-								},
-								60
+								{},
+								10
 							],
 							[
 								{
 									opacity : 0
 								},
-								70
+								20
 							],
 							[
 								{
 									display : false
 								},
-								71
+								30
 							]
+
 						]
 					},
 					{
@@ -129,54 +219,68 @@ define('app/animations/Scene1', [
 									position : [0, 345, 'window'],
 									size : [467,132]
 								},
-								20
+								5
 							],
 							[
 								{},
+								10
+							],
+							[
+								{
+									position : [0,0,'window'],
+									size : ['window']
+								},
+								20
+							],
+							[
+								{
+								},
+								35
+							],
+							[
+								{
+									position : ['center', 'center', 'window'],
+									size : ['scene']
+								},
+								40
+							],
+							[
+								{},
+								50
+							],
+							[
+								{
+									position : ['center+150', 'center+10', 'scene'],
+									size : [440,80]
+								},
+								55
+							],
+							[
+								{
+								},
 								60
 							],
 							[
 								{
-									position : ['center', 0, 'window'],
-									size : [180,45]
+
 								},
-								70
-							]
-						]
-					},
-					(this.square2Init = {
-						type : 'domDesc',
-						name : 'square2',
-						domDesc : {
-							style : {
-								backgroundColor : '#000'
-							},
-							className : 'sequence square_2'
-						},
-						framesInit : [
-							[
-								{
-									position : ['center', 0, 'window'],
-									size : [180,45],
-									display : false
-								},
-								0
+								65
 							],
 							[
 								{
-									display : true
+									position : ['center','center'],
+									size : ['window']
 								},
-								79
+								75
 							],
 							[
 								{
-									position : [0, 'center', 'window'],
-									size : [300,300]
+									position : ['center','top','window'],
 								},
-								90
+								85
 							]
 						]
-					})
+					}
 				]
 			}
 		},
@@ -195,35 +299,23 @@ define('app/animations/Scene1', [
 			});
 			this.parentEl.appendChild(this.appStateEl);
 			this._a.timeline.on('tick', function(state) {
-				this.appStateEl.innerHTML = state;
+				this.appStateEl.innerHTML = Math.round(state*100)/100;
 			}.bind(this), this);
 		},
 
 		initEvents : function() {
-			var toString = function(o) {
-				var s = '{<br/>', value, valueToString;
-				for (var i in o) if (o.hasOwnProperty(i)) {
-					value = o[i];
-					if (is('array', value)) {
-						valueToString = '[' + value + ']';
-					} else {
-						valueToString = '' + value;
-					}
-					s += i + ' : ' + valueToString + ',<br/>'
-				}
-				s += '}';
-				return s;
-			};
-			var square2 = this.sequence.square2;
-			this.between(88, 90, {
+			this.between(0, 200, {
 				enter : function() {
-					square2.el.innerHTML = toString(this.square2Init.framesInit[2][0])
-				}.bind(this)
-			});
-			this.between(65, 200, {
-				enter : function() {
+					console.log('enter 65-200');
 					this.appStateEl.style.display = 'block';
-				}.bind(this)
+				}.bind(this),
+				out : function() {
+					console.log('out 65-200');
+					this.appStateEl.style.display = 'none';
+				}.bind(this),
+				during : function(r, state) {
+					//console.log('between 65-200',r);
+				}
 			});
 		}
 

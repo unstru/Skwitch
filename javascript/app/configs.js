@@ -3,21 +3,23 @@ define('app/configs',[
 
 	return function() {
     return {
-      initState : 80,
+      initState : 0,
       fps : function() {
         if (this.get('isMobile')) {
           return 30;
-        } else {
-          return 120;
+        } else if (this.get('isTablet')) {
+          return 60;
+        } else  {
+          return 80;
         }
       },
       fDelta : function() {
-        if (this.get('isIpad')) {
-          return 1.1;
+        if (this.get('isTablet')) {
+          return 1.05;
         } else if (this.get('isMobile')){
           return 1.5;
         } else {
-          return 1.2;
+          return 1.05;
         }
       },
       interactionName : !!('ontouchstart' in window) ? 'touch' : 'scroll',
@@ -66,7 +68,7 @@ define('app/configs',[
       },
       minFDelta : 1.01,
       maxFDelta : 1.1,
-      totalDuration : 450,
+      totalDuration : 170,
       elHeight : 43000/2,
       maxFinalStatesDelta : 0.01,
       scrollFactor : 10,
