@@ -16,7 +16,7 @@ define('Skwitch/Animation/DOMView', [
       if (!o) o = {};
       Seed.prototype.init.call(this,o);
 
-      if (!o.el && o.domDesc) {
+      if (!this.el) {
         this.buildEl(o);
       }
       
@@ -34,7 +34,9 @@ define('Skwitch/Animation/DOMView', [
     },
 
     buildEl : function(o) {
-      this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
+      if (this.domDesc) {
+        this.el = toDOM(typeof(this.domDesc) === 'function' ? this.domDesc() : this.formatDesc(this.domDesc), this);
+      }
     },
 
     hasClass : function(name) {
