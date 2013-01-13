@@ -11,7 +11,6 @@ define('app/sequences/ScrollableSequence', [
 		},
 
 		'+init' : function(o) {
-			this.buildEl();
 			this.paragraphContainer.appendChild(this.paragraphEl)
 			this.detectHeight();
 		},
