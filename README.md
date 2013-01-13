@@ -1,4 +1,4 @@
-=== Welcome to Skwitch
+## Welcome to Skwitch
 
 Skwitch is a javascript library to do timeline based animations.
 
