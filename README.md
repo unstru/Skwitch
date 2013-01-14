@@ -36,28 +36,11 @@ It is then provided as [AMD modules](requirejs.org)
 Skwitch flavour timeline and interpolations to do heavy animated websites.  
 It is divided into 2 main modules : Skwitch/Timeline and Skwitch/Animation.  
 
-#### Skwitch/Timeline
-The timeline was developped to solve the lack of window.onscroll triggers on iPad/iPhone safari. It could be separated from Skwitch/Animation.  
-It triggers a 'tick' event on interaction ( such as scroll or touch ) much more time than window.onscroll, with a smooth effect.  
-It also provide 'magnets', wich are the key instants of your application wich are targeted by default on click or whenever you want.  
-You can find the current app magnets definitions in `Skwitch/Timeline/magnets/magnets` ( javascript/modules/Skwitch/Timeline/magnets/magnets)
-
-Many configurations are available for optimisation, see app/configs.js  
-
-Exemple code : 
-
-```javascript
-this.timeline.on('tick', function(appState) {
-	// appState is similar to window.body.scrollTop 
-	// update anything you want fluid, smooth and touch-compatible with appState
-});
-``` 
 
 #### Skwitch/Animation  
 
 Skwitch/Animation will allow two easily build animations thanks to keywords, keyframes and interpolations.  
-It subscribes to Skwitch/Timeline and thanks to keyframes animate your views.  
-Although it currently depends on Skwitch/Timeline, it could be used just to do animations thanks to a whatever triggers 'tick', state. ( to do ? ).  
+It subscribes to Skwitch/Timeline (see below) and thanks to 'keyframes' animate your views.  
 
 Exemple code :  
 
@@ -128,6 +111,25 @@ Will create a div element that, from the instant 0 to the instant 10 ( appState 
 
 For the ScrollableSequence, see it in action in the current demo-repo ( app/sequences/ScrollableSequence and app/animations/Parralax )
 
+Although it currently depends on Skwitch/Timeline, it could be used just to do animations thanks to a whatever triggers 'tick', state. ( to do ? ).  
+
+
+#### Skwitch/Timeline
+The timeline was developped to solve the lack of window.onscroll triggers on iPad/iPhone safari. It could be separated from Skwitch/Animation.  
+It triggers a 'tick' event on interaction ( such as scroll or touch ) much more time than window.onscroll, with a smooth effect.  
+It also provide 'magnets', wich are the key instants of your application and are targeted by default on click or whenever you want.  
+You can find the current app magnets definitions in `Skwitch/Timeline/magnets/magnets` ( javascript/modules/Skwitch/Timeline/magnets/magnets)
+
+Many configurations are available for optimisation, see app/configs.js  
+
+Exemple code : 
+
+```javascript
+this.timeline.on('tick', function(appState) {
+	// appState is similar to window.body.scrollTop 
+	// update anything you want fluid, smooth and touch-compatible with appState
+});
+``` 
 
 ### Dependencies
 
