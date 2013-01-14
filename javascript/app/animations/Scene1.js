@@ -62,7 +62,7 @@ define('app/animations/Scene1', [
 								},
 								71
 							]
-						],
+						]
 					},
 					{
 						type : 'domDesc',
@@ -140,18 +140,18 @@ define('app/animations/Scene1', [
 							],
 							[
 								{
-									color : [255,255,0],
+									color : [255,255,0]
 								},
 								75
 							],
 							[
 								{
 									color : '#ffffff',
-									position : ['unchanged', 'top','scene'],
+									position : ['unchanged', 'top','scene']
 								},
 								85
 							]
-						],
+						]
 					},
 					{
 						type : 'domDesc',
@@ -278,7 +278,7 @@ define('app/animations/Scene1', [
 							],
 							[
 								{
-									position : ['center','top','window'],
+									position : ['center','top','window']
 								},
 								85
 							]
