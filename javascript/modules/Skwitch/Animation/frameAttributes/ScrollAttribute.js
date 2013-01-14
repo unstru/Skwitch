@@ -1,9 +1,1 @@
-define('Skwitch/Animation/frameAttributes/ScrollAttribute', [
-	'./AbstractRateAttribute'
-], function(AbstractRateAttribute) {
-
-	return AbstractRateAttribute.extend({
-
-	});
-
-});
+define("Skwitch/Animation/frameAttributes/ScrollAttribute",["./AbstractRateAttribute"],function(e){return e.extend({})});

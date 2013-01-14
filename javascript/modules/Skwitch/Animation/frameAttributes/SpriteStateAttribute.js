@@ -1,17 +1,1 @@
-define('Skwitch/Animation/frameAttributes/DisplayAttribute', [
-	'../FrameAttribute'
-], function(FrameAttribute) {
-
-	return FrameAttribute.extend({
-		
-		'+options' : {
-			value : 0
-		},
-
-		between : function(c0, c1, r) {
-      return Math.abs(c0 + r*(c1 - c0));
-    }
-
-	});
-
-});
+define("Skwitch/Animation/frameAttributes/DisplayAttribute",["../FrameAttribute"],function(e){return e.extend({"+options":{value:0},between:function(e,t,n){return Math.abs(e+n*(t-e))}})});

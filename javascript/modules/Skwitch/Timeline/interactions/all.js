@@ -1,11 +1,1 @@
-define('Skwitch/Timeline/interactions/all', [
-	'./ScrollInteraction',
-	'./TouchInteraction'
-], function( ScrollInteraction, TouchInteraction) {
-
-	return {
-		ScrollInteraction : ScrollInteraction,
-		TouchInteraction : TouchInteraction
-	};
-
-});
+define("Skwitch/Timeline/interactions/all",["./ScrollInteraction","./TouchInteraction"],function(e,t){return{ScrollInteraction:e,TouchInteraction:t}});

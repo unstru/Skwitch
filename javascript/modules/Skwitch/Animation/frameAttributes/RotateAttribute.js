@@ -1,16 +1,1 @@
-define('Skwitch/Animation/frameAttributes/RotateAttribute', [
-	'../FrameAttribute'
-], function(FrameAttribute) {
-
-	return FrameAttribute.extend({
-
-		'+options' : {
-		},
-
-		between : function(c0, c1, r) {
-      return Math.round(c0 + r*(c1 - c0)) % 360;
-    }
-
-	});
-
-});
+define("Skwitch/Animation/frameAttributes/RotateAttribute",["../FrameAttribute"],function(e){return e.extend({"+options":{},between:function(e,t,n){return Math.round(e+n*(t-e))%360}})});
