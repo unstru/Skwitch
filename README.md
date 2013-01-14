@@ -24,8 +24,9 @@ It is then provided as [AMD modules](requirejs.org)
 ### Get started
 
 * Clone this repo, as seen above 
+* Open your browser ..
 * Play with javascript/app/animations/Scene1.js  
-* Watch javascript/app/Main  
+* Watch javascript/app/Main.js 
 * Play with javascript/app/animations/Parallax.js
 * Read below  
 
