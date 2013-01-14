@@ -12,25 +12,51 @@ define('app/animations/Parallax', [
 			elements : 150
 		},
 
-		'+init' : function() {
-			// this.changeFDeltaDuringParallax();
-		},
-
-		changeFDeltaDuringParallax : function() {
-			this.between(10,30, {
-				enter : function() {
-
-				}.bind(this)
-			});
-		},
-
 		buildSequencesInit : function() {
 			var sequencesInit = [];
 			for (var i = 0; i < this.elements; i++) {
-				sequencesInit.push(this.buildSequenceInit(i));
+				sequencesInit.push(this.buildParallaxElementInit(i));
 			}
 			sequencesInit.push(this.buildScrollSequenceInit());
 			return sequencesInit;
+		},
+
+		buildParallaxElementInit : function(i) {
+			var rand = Math.random,
+					size = [10,10].multiply(Math.round(rand() * 10)).add(10),
+					duration = 10 * rand() + 5,
+					start = rand() * (this.end - this.start),
+					end = start + duration;
+					position = this._a.rect.window.getValue()[1].multiply(rand()).minus(size.divide(2)),
+					positionX = position[0],
+					doRotate  = (start > 30),
+					rotation = 720 * rand() - 360;
+			return {
+				type : 'domDesc',
+				domDesc : {
+					className : 'sequence',
+					style : {
+						backgroundColor : '#000'
+					}
+				},
+				framesInit : [
+					[
+						{
+							position : [positionX, 'bottom', 'window'],
+							size : size,
+							rotate : 0
+						},
+						start
+					],
+					[
+						{
+							position : ['unchanged', 'top-100', 'window'],
+							rotate : (doRotate ? rotation : 0)
+						},
+						end
+					]
+				]
+			}
 		},
 
 		buildScrollSequenceInit : function() {
@@ -103,47 +129,7 @@ define('app/animations/Parallax', [
 					]
 				]
 			}
-		},
-
-		buildSequenceInit : function(i) {
-			var rand = Math.random,
-					size = [10,10].multiply(Math.round(rand() * 10)).add(10),
-					duration = 10 * rand() + 5, // 5 -> 35
-					start = rand() * (this.end - this.start),
-					end = start + duration;
-					position = this._a.rect.window.getValue()[1].multiply(rand()).minus(size.divide(2)),
-					positionX = position[0],
-					doRotate  = (start > 30),
-					rotation = 720 * rand() - 360;
-			return {
-				type : 'domDesc',
-				domDesc : {
-					className : 'sequence',
-					style : {
-						backgroundColor : '#000'
-					}
-				},
-				framesInit : [
-					[
-						{
-							position : [positionX, 'bottom', 'window'],
-							size : size,
-							rotate : 0
-						},
-						start
-					],
-					[
-						{
-							position : ['unchanged', 'top-100', 'window'],
-							rotate : (doRotate ? rotation : 0)
-						},
-						end
-					]
-				]
-			}
 		}
-
-
 	});
 
 });
