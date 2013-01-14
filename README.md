@@ -7,7 +7,7 @@ The timeline is linked with the scroll of your navigator and is mobile and table
 See it in action : [demo](http://cagosta.github.com/Skwitch/)
 
 It's a work in progress but was already used in production.  
-I would be glad helping you using it, feel free to contact me !  
+I would be glad to have feedback and help you using it, feel free to contact me !  
 
 ### Install
 
