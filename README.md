@@ -21,6 +21,15 @@ git submodule init && git submodule update
 
 It is then provided as [AMD modules](requirejs.org)
 
+### Get started
+
+* Clone this repo, as seen above 
+* Play with javascript/app/animations/Scene1.js  
+* Watch javascript/app/Main  
+* Play with javascript/app/animations/Parallax.js
+* Read below  
+
+
 ### Abstract
 
 Skwitch flavour timeline and interpolations to do heavy animated websites.  
@@ -47,7 +56,7 @@ this.timeline.on('tick', function(appState) {
 
 Skwitch/Animation will allow two easily build animations thanks to keywords, keyframes and interpolations.  
 It subscribes to Skwitch/Timeline and thanks to keyframes animate your views.  
-Although it currently depends on Skwitch/Timeline, it could be used just to do animations thank's to a whatever triggers 'tick', state. ( to do ? ).  
+Although it currently depends on Skwitch/Timeline, it could be used just to do animations thanks to a whatever triggers 'tick', state. ( to do ? ).  
 
 Exemple code :  
 
