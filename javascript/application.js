@@ -14,8 +14,12 @@ requirejs.config({
 });
 
 
-require(['app/Main'], function(Main) {
 
-  window.app = new Main();
+
+require(['app/Main', 'domReady/domReady'], function(Main, domReady) {
+
+  domReady(function() {
+    window.app = new Main();
+  });
 
 });
