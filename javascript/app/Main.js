@@ -18,6 +18,9 @@ define('app/Main', [
 
     '+init' : function() {
       this._a = this;
+      if (!window.console) {
+        window.console = function() {};
+      }
       this.body = (new View({
         el : document.body
       }));
