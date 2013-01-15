@@ -42,10 +42,10 @@ javascript/modules/toDOM/toDOM.js
 javascript/modules/Skwitch/Timeline/interactions/ScrollInteraction.js
 javascript/modules/Skwitch/Timeline/interactions/TouchInteraction.js
 javascript/modules/Skwitch/Timeline/interactions/all.js
-javascript/modules/Skwitch/Timeline/magnets/magnets.js
 javascript/modules/Skwitch/Timeline/Timeline.js
 javascript/modules/Config/Config.js
 javascript/app/configs.js
+javascript/app/magnets.js
 javascript/modules/Geo/refs.js
 javascript/modules/Geo/Ref.js
 javascript/modules/Geo/Seg.js
@@ -53,6 +53,7 @@ javascript/modules/Geo/R4.js
 javascript/modules/objects/isArray.js
 javascript/modules/Geo/Point.js
 javascript/modules/Geo/Rect.js
+javascript/modules/detect/detect.js
 javascript/modules/Skwitch/Animation/DOMView.js
 javascript/modules/Geo/Coordinate.js
 javascript/modules/Geo/D2Point.js
@@ -76,4 +77,5 @@ javascript/app/animations/Scene1.js
 javascript/app/sequences/ScrollableSequence.js
 javascript/app/animations/Parallax.js
 javascript/app/Main.js
+javascript/modules/domReady/domReady.js
 javascript/modules/../application.js
