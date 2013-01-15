@@ -37,7 +37,7 @@ define('app/sequences/ScrollableSequence', [
 		detectHeight : function() {
 			this.setViewportHeight();
 			var pHeight = this.paragraphEl.offsetHeight;
-			if (pHeight < this.viewportHeight) {
+			if (pHeight && pHeight < this.viewportHeight) {
 				this.paragraphEl.offsetHeight = this.viewportHeight;
 				pHeight = this.viewportHeight;
 			}
