@@ -1,7 +1,7 @@
 ({
   appDir: '../',
   baseUrl: 'javascript/modules',
-  dir: '../../Skwitch-build',
+  dir: '../../Skwitch-demo',
   paths : {
   	app : '../app',
   	toDOM : './toDOM/toDOM'

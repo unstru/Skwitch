@@ -18,10 +18,10 @@ git submodule init && git submodule update
 
 * Clone this repo, as seen above 
 * Open your browser ..
-* Play with javascript/app/animations/Scene1.js  
-* Play with configs in javascript/app/configs.js
-* See javascript/app/Main.js 
-* Play with javascript/app/animations/Parallax.js
+* Play with `javascript/app/animations/Scene1.js`
+* Play with `javascript/app/configs.js`
+* See `javascript/app/Main.js`
+* Play with `javascript/app/animations/Parallax.js`
 * Read below  
 
 It's a work in progress, but was already used in production.  
@@ -44,35 +44,35 @@ Exemple code :
 var myAnim = Animation.extend({
 	
 	'+options' : {
-		start : 0,
-		end : 10,
-		sequencesInit :	[
-			{
-				domDesc : { // see https://github.com/cagosta/toDOM
+		start : 0, 					// beginning of this animation, related to the timeline
+		end : 10, 					// end of this animation
+		sequencesInit :	[		// a animation is several sequences
+			{ 								// description of a sequence
+				domDesc : { 		// DOM representation, see https://github.com/cagosta/toDOM
 					className : 'sequence'
 				},
-				framesInit : [
-					[
-						{
+				framesInit : [ 	// keyframes of the sequence
+					[	
+						{						// attributes of the first keyframe
 							position : ['left','center', 'window'],
 							size : [100,100],
 							color : '#00000'
 						},
-						0
+						0 					// will start at 0
 					],
-					[
+					[							// attributes of the second keyframe
 						{
 							position : ['right', 'center', 'window'],
 							size : ['window'],
 							color : '#ffffff'
 						},
-						10
+						10 					// and end at 10
 					]
 				],
 			},
 			{
-				cstr : ScrollableSequence,
-				paragraphEl : toDOM({
+				cstr : ScrollableSequence, // constructor of the sequence, default to Animation/Sequence
+				paragraphEl : toDOM({			 // Option transmitted to ScrollableSequence
 					innerHTML : 'A very long text..'
 				}),
 				framesInit : [
@@ -101,7 +101,7 @@ var myAnim = Animation.extend({
 
 Will create a div element that, from the instant 0 to the instant 10 : 
 - goes from the left of your navigator to the right  ( 'hidden' left, 'hidden' right )  
-- change width and height from 100/100 to the size of the window  
+- change width and height from 100x100 to the size of the window  
 - change color from black to white
 
 
@@ -114,14 +114,14 @@ Although it currently depends on Skwitch/Timeline, Skwitch/Animation could be us
 The timeline was developped to solve the lack of window.onscroll triggers on iPad/iPhone safari. It could be separated from Skwitch/Animation.  
 It triggers a 'tick' event on interaction ( such as scroll or touch ) much more time than window.onscroll, with a smooth effect.  
 
-Many configurations are available for optimisation, see javascript/app/configs.js   
-Exemple config :   
-* Timeline total duration ( wich is abstracted )
+Many configurations are available for optimisation, see javascript/app/configs.js  
+Exemple config :
+* Timeline total duration ( abstracted )
 * Frame per second
 
 ##### Magnets
-It also provides 'magnets', wich are the key instants of your application, targeted by default on click or whenever you want.  
-You can find the current app magnets definitions in `Skwitch/Timeline/magnets/magnets` ( javascript/modules/Skwitch/Timeline/magnets/magnets)
+It also provides 'magnets', wich are the key instants of your application, targeted by default on click, or whenever you want.  
+You can find the current app magnets definitions in 'app/magnets` ( javascript/app/magnets.js )
 
 
 Exemple code : 
@@ -129,7 +129,8 @@ Exemple code :
 ```javascript
 this.timeline.on('tick', function(appState) {
 	// appState is similar to window.body.scrollTop 
-	// update anything you want fluid, smooth and touch-compatible with appState
+	// update anything you want fluid, smooth with appState
+	// also work for touch devices
 });
 ``` 
 
