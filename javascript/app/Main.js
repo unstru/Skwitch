@@ -5,6 +5,7 @@ define('app/Main', [
   'Skwitch/Timeline/Timeline',
   'Config/Config',
   'app/configs',
+  'app/magnets',
   'Geo/Ref',
   'Geo/Rect',
   'Skwitch/Animation/DOMView',
@@ -12,7 +13,7 @@ define('app/Main', [
   'toDOM',
   './animations/Scene1',
   'app/animations/Parallax'
-], function(F, A, S, Timeline, Config, configs, Ref, Rect, View, Seed, toDOM, Scene1, Parallax) {
+], function(F, A, S, Timeline, Config, configs, magnets, Ref, Rect, View, Seed, toDOM, Scene1, Parallax) {
 
   return Seed.extend({
 
@@ -70,7 +71,8 @@ define('app/Main', [
 
     buildTimeline : function() {
       this.timeline = this.sub(Timeline, {
-        config : this.config
+        config : this.config,
+        magnets : magnets
       });
     },
 

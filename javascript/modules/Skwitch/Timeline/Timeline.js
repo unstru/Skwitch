@@ -1,14 +1,14 @@
 define('Skwitch/Timeline/Timeline', [
   'Seed/Seed',
-  './interactions/all',
-  './magnets/magnets'
-], function(Seed, interactions, magnets) {
+  './interactions/all'
+], function(Seed, interactions) {
 
   return Seed.extend({
 
     '+options' : {
       config : null,
-      initState : null
+      initState : null,
+      magnets : null
     },
 
     '+init' : function() {
@@ -16,7 +16,6 @@ define('Skwitch/Timeline/Timeline', [
       this.initState = this.initState || this.config.get('initState');
       this.interactionName = this.config.get('interactionName');
       this.buildInteraction();
-      this.buildMagnets();
       this.appState = this.interaction.getState();
       this.targetState = this.interaction.getState();
       this.interaction.forceToState(this.targetState);
@@ -167,10 +166,6 @@ define('Skwitch/Timeline/Timeline', [
         
         this.fire('tick', this.appState);
       }
-    },
-
-    buildMagnets : function() {
-      this.magnets = magnets;
     },
 
     appToMagnet : function() {
