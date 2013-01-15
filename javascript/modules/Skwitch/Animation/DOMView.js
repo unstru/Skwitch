@@ -1,9 +1,10 @@
 define('Skwitch/Animation/DOMView', [
   'Seed/Seed',
   'toDOM',
-  'objects/extend'
+  'objects/extend',
+  'detect/detect'
 ],
-  function(Seed, toDOM, extend) {
+  function(Seed, toDOM, extend, detect) {
  
  	return Seed.extend({
 
@@ -68,6 +69,7 @@ define('Skwitch/Animation/DOMView', [
     },
 
     cssFormater : {
+
     	rotate : function(o) {
 	      var cssRotate = 'rotate('+o+'deg)';
 	      return {
@@ -75,7 +77,17 @@ define('Skwitch/Animation/DOMView', [
 	        'MozTransform' : cssRotate,
 	        'transform' : cssRotate
 	      };
-	    }
+	    },
+
+      color : function(c) {
+        if (detect.get('isIE') && detect.get('IEVersion') <= 8) {
+          if (/rgb/.test(c)) { // if rgba
+            return { color : '#000' }; // black TODO hex conversion
+          }
+        }
+        return {};
+      }
+
     },
 
     hide : function() {

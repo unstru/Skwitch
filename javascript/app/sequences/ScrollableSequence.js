@@ -49,7 +49,8 @@ define('app/sequences/ScrollableSequence', [
 		_renderScroll : function(scrollState) {
 			this.setViewportHeight();
 			var margin = (this.paragraphHeight - this.viewportHeight) * scrollState;
-			this.paragraphContainer.style.marginTop = - margin + 'px';
+			if (margin)
+				this.paragraphContainer.style.marginTop = - margin + 'px';
 		},
 
 		setViewportHeight : function() {
