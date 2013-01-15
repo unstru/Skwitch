@@ -104,13 +104,12 @@ define('app/animations/Scene1', [
 							],
 							[
 								{
-									rotate : 45,
-									position : [['center','scene'],'center','scene' ]
 								},
 								30
 							],
 							[
 								{
+									position : [['center','scene'],'center','scene' ],
 									rotate : 30
 								},
 								40
@@ -237,8 +236,15 @@ define('app/animations/Scene1', [
 							],
 							[
 								{
+									position : [-300,0,'window']
 								},
-								35
+								25
+							],
+							[
+								{
+									position : [0,0,'window']
+								},
+								30
 							],
 							[
 								{
