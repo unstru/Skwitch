@@ -4,7 +4,7 @@ Skwitch is a javascript library to do timeline based animations.
 
 The timeline is linked with the scroll of your navigator and is mobile and tablet compatible, so you can do Parallax™ websites everywhere !
 
-See it in action : [demo](http://cagosta.github.com/Skwitch/)
+*[Demo](http://cagosta.github.com/Skwitch/)*
 
 ### Install
 
