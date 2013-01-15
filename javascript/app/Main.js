@@ -76,7 +76,7 @@ define('app/Main', [
 
     buildEl : function() {
       this.el = toDOM({
-        attr : { 'class' : 'skwitch_container skwitch_window' }
+        className :  'skwitch_container skwitch_window'
       });
       this.body.el.appendChild(this.el);
     },
