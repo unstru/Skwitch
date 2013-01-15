@@ -3,8 +3,9 @@ define('Skwitch/Animation/Sequence', [
   'Geo/Coordinate',
   'Geo/D2Point',
   './Frame',
-  'objects/is'
-], function(View, Coordinate, Point, Frame, is) {
+  'objects/is',
+  'detect/detect'
+], function(View, Coordinate, Point, Frame, is, detect) {
 
   return View.extend({
 
@@ -301,9 +302,22 @@ define('Skwitch/Animation/Sequence', [
        this.el.style.height = size[1] + 'px';
     },
 
-    _renderColor : function(c) {
+    _renderColor : function(rgb) {
+      var color;
+      if (detect('isIE') && detect('IEVersion') <= 8) { // IE<=8, conversion to hexa, should be in DOMView ?
+        if (rgb.length > 3) {
+          rgb.splice(3,1);
+        }
+        var hexColor = rgb.map(function(c) {
+          var hex = c.toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+        }).join('');
+        color = '#' + hexColor;
+      } else {
+        color = 'rgba(' + rgb.join() + ')';
+      }
       this.css({
-        color : 'rgba(' + c.join() + ')'
+        color : color
       });
     },
 

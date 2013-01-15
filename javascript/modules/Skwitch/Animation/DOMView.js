@@ -58,10 +58,14 @@ define('Skwitch/Animation/DOMView', [
 
     css : function(o, el) {
       el = el || this.el;
+      var formatter;
       if (el) {
         for (var i in o) if (o.hasOwnProperty(i)) {
           if (this.cssFormater[i]) {
-            extend(o, this.cssFormater[i](o[i]));
+            formatter = this.cssFormater[i](o[i])
+            if (formatter) {
+              extend(o, formatter);
+            }
           }
         }
       }
@@ -79,12 +83,18 @@ define('Skwitch/Animation/DOMView', [
 	      };
 	    },
 
-      color : function(c) {
-        if (detect.get('isIE') && detect.get('IEVersion') <= 8) {
-          if (/rgb/.test(c)) { // if rgba
-            return { color : '#000' }; // black TODO hex conversion
+      opacity : function(o) {
+        var IEV = detect('IEVersion');
+        if (IEV && IEV <= 8) { // for IE, hide the element if opacity is 0
+          if (o === 0) {
+            return { display : 'none' }
+          } else {
+            return { display : 'block' }
           }
         }
+      },
+      // rgb detect and fallback ?
+      color : function(c) {
         return {};
       }
 
