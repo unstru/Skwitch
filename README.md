@@ -6,12 +6,7 @@ The timeline is linked with the scroll of your navigator and is mobile and table
 
 See it in action : [demo](http://cagosta.github.com/Skwitch/)
 
-It's a work in progress but was already used in production.  
-I would be glad to have feedback and help you using it, feel free to contact me !  
-
 ### Install
-
-Because of the heavy-javascript nature of Skwitch, I advise you to clone this repo-demo and see it in action instead of including it in your project :
 
 ```bash
 git clone -b master git@github.com:cagosta/Skwitch.git  
@@ -19,23 +14,23 @@ cd Skwitch
 git submodule init && git submodule update
 ```
 
-It is then provided as [AMD modules](requirejs.org)
-
 ### Get started
 
 * Clone this repo, as seen above 
 * Open your browser ..
 * Play with javascript/app/animations/Scene1.js  
-* Watch javascript/app/Main.js 
+* Play with configs in javascript/app/configs.js
+* See javascript/app/Main.js 
 * Play with javascript/app/animations/Parallax.js
 * Read below  
+
+It's a work in progress, but was already used in production.  
+I would be glad to have feedbacks and help you using it, feel free to contact me !  
 
 
 ### Abstract
 
-Skwitch flavour timeline and interpolations to do heavy animated websites.  
 It is divided into 2 main modules : Skwitch/Timeline and Skwitch/Animation.  
-
 
 #### Skwitch/Animation  
 
@@ -104,23 +99,30 @@ var myAnim = Animation.extend({
 
 ```
 
-Will create a div element that, from the instant 0 to the instant 10 ( appState ) : 
+Will create a div element that, from the instant 0 to the instant 10 : 
 - goes from the left of your navigator to the right  ( 'hidden' left, 'hidden' right )  
 - change width and height from 100/100 to the size of the window  
 - change color from black to white
 
-For the ScrollableSequence, see it in action in the current demo-repo ( app/sequences/ScrollableSequence and app/animations/Parralax )
 
-Although it currently depends on Skwitch/Timeline, it could be used just to do animations thanks to a whatever triggers 'tick', state. ( to do ? ).  
+For the ScrollableSequence, see it in action in the current demo repo ( app/sequences/ScrollableSequence and app/animations/Parralax )
+
+Although it currently depends on Skwitch/Timeline, Skwitch/Animation could be used just to do animations thanks to a whatever triggers 'tick', state. 
 
 
 #### Skwitch/Timeline
 The timeline was developped to solve the lack of window.onscroll triggers on iPad/iPhone safari. It could be separated from Skwitch/Animation.  
 It triggers a 'tick' event on interaction ( such as scroll or touch ) much more time than window.onscroll, with a smooth effect.  
-It also provide 'magnets', wich are the key instants of your application and are targeted by default on click or whenever you want.  
+
+Many configurations are available for optimisation, see javascript/app/configs.js   
+Exemple config :   
+* Timeline total duration ( wich is abstracted )
+* Frame per second
+
+##### Magnets
+It also provides 'magnets', wich are the key instants of your application, targeted by default on click or whenever you want.  
 You can find the current app magnets definitions in `Skwitch/Timeline/magnets/magnets` ( javascript/modules/Skwitch/Timeline/magnets/magnets)
 
-Many configurations are available for optimisation, see app/configs.js  
 
 Exemple code : 
 
@@ -137,13 +139,13 @@ I advise you before starting to take a look at [Seed.js](https://github.com/pier
 
 Skwitch is provided as AMD modules, [require.js](requirejs.org) is included.  
 
-
+#### toDOM and SEO
 Also, you might want to see [toDOM](https://github.com/cagosta/toDOM) which is not needed but recommended to build DOM elements.  
-If toDOM do not interest you, you can also build your elements with `<html>` and insert it into animations.  
+If toDOM do not interest you, because you do not like it or you want to be SEO-friendly, you can also build your elements with `<html>` into your .html and insert it into your animations.  
+
 For instance if we take the code above :
 
 ```javascript
-
 ...
 {
 	'+options' : {
@@ -160,7 +162,7 @@ For instance if we take the code above :
 ...
 
 ```
-Or better, you could create a JSequence that inherits from Skwitch/Animation/Sequence that handle $el where you could put your view related logic. 
+Or better, you could create a JSequence that inherits from Skwitch/Animation/Sequence that handle $el and where you could put your view-related logic. 
 
 
 ### Custom interpolations and keywords.
@@ -177,7 +179,7 @@ What define how to render an attribute is in Animation/Sequence.
 
 If you want to render an attribute ( size, position .. ) differently, you could just update Animation/Sequence or inherit from it and write your own _renderSize or _renderPosition method.
 
-As a summary, if you want to create a new interpolation / attribute : 
+As a summary, if you want to create a new interpolations / attributes : 
 * create another Skwitch/Animation/framesAttributes/[AttributeName]Attribute that inherits from Skwitch/Animation/FrameAttribute  
 * add it into Skwitch/Animation/framesAttributes/all  
 * create another Sequence or update Animation/Sequence with you _render[AttributeName] function
@@ -187,39 +189,6 @@ I created app/sequences/ScrollableSequence as an exemple.
 Also, do not forget to create a 'equal' function in [AttributeName]Attribute if attribute comparaison cannot be handle by native === ( like Array ). This will help avoid unnecessary DOM updates.  
 
 
-### Class descriptions  
-
-( Work in progress )
-
-Animation/Animation  
-An animation has notion of time and manipulate it.  
-- build the sequences  
-- subscribe to Skwitch/Timeline   
-- become a timeline that trigger a tick, wich is just appState - this.start  
-
-Animation inherits from sequence and can have a element, which can help you put animations into animations. ( although it is not stable and yet recommended )
-
-Animation/Sequence  
-
-- build the keyframes  
-- build the current frame which can be interpolation of keyframes  
-- is a view  
-- render the attributes when needed
-
-Animation/Frame  
-A frame is a representation at an instant t of the state of an object.    
-It :
-- build the frame attributes
-- has as many attributes as needed in the animation  
-- instanciate FrameAttribute
-
-Animation/FrameAttribute  
-It is where the logic of interpolation and keywords helpers is.
-It's an abstract class, each attribute should inherit of it.
-It : 
-- format the frameAttribute init  
-- define what means to be between A and B.
-
 
 ### Limitations
 * Opacity for IE<=8 ( because of CCS3, be careful and think about animations with no opacity change if you want IE<=8 )
@@ -228,13 +197,14 @@ It :
 Also,
 * Be careful if you work with other libraries that augment native prototypes like [Array](https://github.com/cagosta/Array)
 
+### Class description
+[ Work in progress in the wiki ](https://github.com/cagosta/Skwitch/wiki)
 
 
 ### To Do
 
 * Comment the whole code
 * Doc
-* Compile sources
 * Provide a easy-to use Timeline
 * Separate Skwitch/Animation and Skiwtch/Timeline  ?? ( Try with tween.js )
 * Do better Timeline.tweener
