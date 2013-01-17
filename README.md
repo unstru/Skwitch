@@ -231,7 +231,7 @@ Some reasons :
 
 ### Author 
 
-* [Cyril Agosta](http://github.com/cagosta)  ( Hire me !)
+* [Cyril Agosta](http://github.com/cagosta)
 
 And for the modules under ( Seed, Geo .. )
 * [Pierre Cole](http://github.com/piercus)  
@@ -239,4 +239,4 @@ And for the modules under ( Seed, Geo .. )
 
 ### Licence  
 
-MIT, see LICENCE.txt
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Skwitch</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://github.com/cagosta" property="cc:attributionName" rel="cc:attributionURL">Cyril Agosta</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
