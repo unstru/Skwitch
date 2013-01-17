@@ -54,13 +54,7 @@ define('app/animations/Scene1', [
 								{
 									display : false
 								},
-								70
-							],
-							[
-								{
-									display : false
-								},
-								71
+								21
 							]
 						]
 					},
@@ -109,7 +103,7 @@ define('app/animations/Scene1', [
 							],
 							[
 								{
-									position : [['center','scene'],'center','scene' ],
+									position : ['center','center','scene'],
 									rotate : 30
 								},
 								40
@@ -146,7 +140,7 @@ define('app/animations/Scene1', [
 							[
 								{
 									color : '#ffffff',
-									position : ['unchanged', 'top','scene']
+									position : ['unchanged', 'top','window']
 								},
 								85
 							]

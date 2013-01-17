@@ -6,7 +6,6 @@ define('app/sequences/ScrollableSequence', [
 	return Sequence.extend({
 
 		'+options' : {
-			viewportHeight : 100,
 			paragraphEl : null
 		},
 
@@ -42,8 +41,6 @@ define('app/sequences/ScrollableSequence', [
 				pHeight = this.viewportHeight;
 			}
 			this.paragraphHeight = pHeight;
-
-			this.paragraphHeight += 3;
 		},
 
 		_renderScroll : function(scrollState) {
